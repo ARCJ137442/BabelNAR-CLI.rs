@@ -58,13 +58,11 @@ version = "0.17" # 现已发布于`crates.io`
 features = [] # ! 【2024-03-21 09:24:51】暂时没有特性
 
 [dependencies.babel_nar]
-path = "../BabelNAR.rs" # TODO: 待BabelNAR.rs发布后恢复
-features = ["bundled"]
-# version = "0.25"
-# features = [ # * 🚩【2024-09-12 18:04:39】目前锁定以下两个特性
-#     "cin_implements", # 各大CIN的NAVM实现
-#     "test_tools", # 测试工具集
-# ]
+version = "0.26"
+features = [ # * 🚩【2024-09-12 18:04:39】目前锁定以下两个特性
+    "cin_implements", # 各大CIN的NAVM实现
+    "test_tools", # 测试工具集
+]
 
 ## 依赖特性的可选依赖 ##
 
