@@ -13,7 +13,7 @@ license = "MIT OR Apache-2.0"
 categories = [
     "command-line-utilities", # CLI应用
 ] # 🔗<https://crates.io/category_slugs>
-repository = "https://github.com/ARCJ137442/BabelNAR-CLI"
+repository = "https://github.com/ARCJ137442/BabelNAR-CLI.rs"
 
 # Cargo文档参考：<https://rustwiki.org/zh-CN/cargo/reference/manifest.html>
 
