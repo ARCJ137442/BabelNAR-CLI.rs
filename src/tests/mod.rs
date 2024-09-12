@@ -344,6 +344,44 @@ mod native_il_1 {
     }
 }
 
+/// 测试/NARust-158
+mod narust_158 {
+    use super::*;
+
+    cin_tests! {
+        NARUST_158;
+        // TODO: 彻查「推理测试」无响应的bug
+
+        /// 真值通配
+        /// * ✅【2024-09-13 01:31:29】成功
+        nal_tw => NAL_TRUTH_WILDCARD
+
+        /// 简单演绎
+        /// * ✅【2024-09-13 01:31:34】成功
+        nal_de => NAL_SIMPLE_DEDUCTION
+
+        /// 高阶演绎
+        /// * ✅【2024-09-13 01:31:39】成功
+        nal_hi => NAL_HIGHER_DEDUCTION
+
+        /// 自变量消除
+        /// * ✅【2024-09-13 01:31:44】成功
+        nal_ie => NAL_I_VAR_ELIMINATION
+
+        /// 时间归纳
+        /// * ❌【2024-09-13 01:31:49】不支持
+        nal_te => NAL_TEMPORAL_INDUCTION
+
+        /// 简单操作
+        /// * ❌【2024-09-13 01:31:56】不支持
+        nal_so => NAL_SIMPLE_OPERATION
+
+        /// 操作
+        /// * ❌【2024-09-13 01:32:02】不支持
+        nal_op => NAL_OPERATION
+    }
+}
+
 // ! ❌【2024-04-07 14:39:20】接口完成度不高的NARS-Python、OpenJunars暂不进行测试
 
 /// 测试入口/带Websocket Shell

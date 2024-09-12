@@ -29,6 +29,8 @@ nar_dev_utils::macro_once! {
     CXIN_JS = "./src/tests/cli/config/cin_cxin_js.hjson"
     /// 原生IL-1
     NATIVE_IL_1 = "./src/tests/cli/config/cin_native_il_1.hjson"
+    /// NARust-158
+    NARUST_158 = "./src/tests/cli/config/cin_narust_158.hjson"
 
     /// 预引入/NAL测试环境
     PRELUDE_TEST = "./src/tests/cli/config/prelude_test.hjson"
