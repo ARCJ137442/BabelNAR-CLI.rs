@@ -172,13 +172,14 @@ impl OutputType<'_> {
             "WARN" => message.bright_yellow(),
             "LOG" => message.bright_black(),
             // NAVM输出
-            "IN" | "OUT" => message.bright_white(),
+            "IN" => message.bright_white(),
+            "OUT" => message.bright_white().reversed(),
             "EXE" => message.bright_cyan().reversed(),
             "ANSWER" | "ACHIEVED" => message.bright_green().reversed(),
             "INFO" => message.cyan(),
             "COMMENT" => message.white(),
             "ERROR" => message.red(),
-            "TERMINATED" => message.bright_white().reversed().blink(),
+            "TERMINATED" => message.bright_red().reversed().blink(),
             // ↓OpenNARS附加
             "ANTICIPATE" => message.bright_yellow(),
             "CONFIRM" => message.bright_blue(),
