@@ -9,26 +9,9 @@
 
 use anyhow::Result;
 use babel_nar::{eprintln_cli, println_cli};
+use babel_nar_cli::cli::*;
 use clap::Parser;
-use std::io::Result as IoResult;
-use std::thread::sleep;
-use std::time::Duration;
-use std::{env, path::PathBuf};
-
-nar_dev_utils::mods! {
-    // 启动参数
-    use vm_config;
-    // 命令行解析
-    use arg_parse;
-    // 配置（自动）搜索
-    use config_search;
-    // 从配置启动
-    use config_launcher;
-    // 运行时交互、管理
-    use runtime_manage;
-    // Websocket服务端
-    use websocket_server;
-}
+use std::{env, io::Result as IoResult, path::PathBuf, thread::sleep, time::Duration};
 
 /// 主入口
 pub fn main() -> Result<()> {

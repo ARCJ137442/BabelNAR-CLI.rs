@@ -1,6 +1,6 @@
 //! CIN自动搜索
 
-use crate::{read_config_extern, LaunchConfig};
+use crate::cli::{read_config_extern, LaunchConfig};
 use anyhow::Result;
 use babel_nar::{
     cli_support::cin_search::{name_match::is_name_match, path_walker::PathWalkerV1},

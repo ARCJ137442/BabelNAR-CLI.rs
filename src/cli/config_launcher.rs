@@ -1,6 +1,6 @@
 //! 用于从「启动参数」启动NAVM运行时
 
-use crate::{
+use crate::cli::{
     read_config_extern, search_configs, LaunchConfig, LaunchConfigCommand, LaunchConfigTranslators,
     RuntimeConfig, SUPPORTED_CONFIG_EXTENSIONS,
 };

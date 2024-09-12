@@ -2,7 +2,7 @@
 //! * ⚠️【2024-04-01 14:31:09】特定于二进制crate，目前不要并入[`babel_nar`]
 //! * 🚩【2024-04-04 03:03:58】现在移出所有与「启动配置」相关的逻辑到[`super::vm_config`]
 
-use crate::{load_config_extern, read_config_extern, LaunchConfig};
+use crate::cli::{load_config_extern, read_config_extern, LaunchConfig};
 use babel_nar::println_cli;
 use clap::Parser;
 use std::{
@@ -203,8 +203,8 @@ mod tests {
     /// 测试/加载配置
     mod read_config {
         use super::*;
-        use crate::vm_config::*;
-        use crate::LaunchConfigWebsocket;
+        use crate::cli::vm_config::*;
+        use crate::cli::LaunchConfigWebsocket;
         use config_paths::*;
         use nar_dev_utils::manipulate;
 
