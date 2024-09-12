@@ -1,2 +1,2 @@
 @echo off
-".\..\..\target\release\babelnar_cli.exe" -c ".\..\..\src\tests\cli\config\cin_cxin_js.hjson"
+".\..\..\target\release\babel_nar_cli.exe" -c ".\..\..\config_public\cin_cxin_js.hjson"

@@ -4,7 +4,7 @@
 @echo off
 
 @REM 构建BabelNAR CLI（基于cargo）
-cargo b -r --bin babelnar_cli
+cargo b -r
 
 @REM 重置dist文件夹
 rm -rf dist
@@ -16,7 +16,7 @@ mkdir .\dist
 xcopy /E /I .\config_public .\dist\nars_config
 
 @REM 拷贝BabelNAR CLI
-copy .\target\release\babelnar_cli.exe .\dist
+copy .\target\release\babel_nar_cli.exe .\dist\babelnar_cli.exe
 
 @REM 拷贝指定的可执行文件
 xcopy /E /I .\executables\PyNARS .\dist\executables\PyNARS

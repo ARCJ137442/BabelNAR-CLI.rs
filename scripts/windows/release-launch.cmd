@@ -1,2 +1,2 @@
 @echo off
-".\..\..\target\release\babelnar_cli.exe"
+".\..\..\target\release\babel_nar_cli.exe"
