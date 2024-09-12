@@ -1,0 +1,15 @@
+#hjson
+// * 🎯用于测试NARust-158
+// * ✨纯Rust编写的完整OpenNARS 1.5.8复刻版本
+{
+    description: NARust-158（纯Rust编写，支持原生接口）
+    translators: native
+    command: {
+        // * ⚠️必须前缀`./`以指定是「启动当前工作目录下的exe文件」
+        cmd: ./narust_158_batch.exe
+        cmdArgs: []
+        // 启动目录
+        currentDir: ./../executables
+    }
+    autoRestart: true
+}

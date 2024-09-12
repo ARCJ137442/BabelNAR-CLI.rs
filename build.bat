@@ -26,6 +26,7 @@ copy .\executables\ONA.exe .\dist\executables\ONA.exe
 copy .\executables\opennars-158-shell.jar .\dist\executables\opennars-158-shell.jar
 copy .\executables\opennars-304-T-modified.jar .\dist\executables\opennars-304-T-modified.jar
 copy .\executables\opennars-matriangle-test.log.json .\dist\executables\opennars-matriangle-test.log.json
+copy .\executables\narust_158_batch.exe .\dist\executables\narust_158_batch.exe
 
 echo Build Successfull!
 sleep 1
