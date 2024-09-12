@@ -74,6 +74,7 @@ mod tests {
     use ws::util::{Timeout, Token};
 
     #[test]
+    #[ignore = "【2024-09-12 18:02:52】涉及网络IO的不进行测试，会导致测试进程阻塞"]
     fn main() {
         let t = spawn_on("127.0.0.1:3012", |sender| {
             println!("Websocket启动成功");
