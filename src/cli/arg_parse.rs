@@ -2,8 +2,10 @@
 //! * ⚠️【2024-04-01 14:31:09】特定于二进制crate，目前不要并入[`babel_nar`]
 //! * 🚩【2024-04-04 03:03:58】现在移出所有与「启动配置」相关的逻辑到[`super::vm_config`]
 
-use crate::cli::{load_config_extern, read_config_extern, LaunchConfig};
-use babel_nar::println_cli;
+use crate::{
+    cli::{load_config_extern, read_config_extern, LaunchConfig},
+    println_cli,
+};
 use clap::Parser;
 use std::{
     env::{current_dir, current_exe},
@@ -113,7 +115,7 @@ pub fn load_config(args: &CliArgs) -> LaunchConfig {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use babel_nar::tests::*;
+    use crate::tests::*;
     use nar_dev_utils::fail_tests;
 
     /// 测试/参数解析

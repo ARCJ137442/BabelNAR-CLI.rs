@@ -1,8 +1,10 @@
 //! 单元测试
 #![allow(unused_attributes)]
 
-use super::*;
+use crate::cli::main_args;
+use anyhow::Result;
 use nar_dev_utils::list;
+use std::env;
 
 /// 测试用配置文件路径
 /// * 🎯后续其它地方统一使用该处路径
@@ -14,12 +16,26 @@ use nar_dev_utils::list;
 pub mod config_paths;
 use config_paths::*;
 
+/// 测试用宏/找不到路径即退出
+/// * 🚩输入一个`&str`，构建`&Path`并在其不存在时退出程序，或返回该`&Path`对象
+#[macro_export]
+macro_rules! exists_or_exit {
+    ($path:expr) => {{
+        let path = std::path::Path::new($path);
+        if !path.exists() {
+            println!("所需路径 {path:?} 不存在，已自动退出");
+            std::process::exit(0)
+        }
+        path
+    }};
+}
+
 /// 通用测试入口
 /// * 🎯通用、可复用的启动代码
 ///   * 🎯跨不同CIN通用
 ///   * 🎯跨同CIN不同测试通用
 pub fn main(cin_config_path: &str, other_args: &[&str]) -> Result<()> {
-    babel_nar::exists_or_exit!("./executables");
+    exists_or_exit!("./executables");
     // 以默认参数启动
     main_args(
         env::current_dir(),
@@ -54,44 +70,44 @@ pub fn main_configs(cin_config_path: &str, other_config_paths: &[&str]) -> Resul
 
 /// 批量生成「预引入NAL」
 macro_rules! cin_tests {
-    (
-        $(#[$attr_root:meta])*
-        $cin_path:ident; // ! ❌若为`expr`，则会和上边的修饰符导致「本地歧义」
-        $(
-            $(#[$attr:meta])*
-            $name:ident => $config_path:expr $(;)?
-        )*
-    ) => {
-        /// 主Shell
-        /// * 🎯正常BabelNAR CLI shell启动
-        /// * 🎯正常用户命令行交互体验
-        $(#[$attr_root])*
+(
+    $(#[$attr_root:meta])*
+    $cin_path:ident; // ! ❌若为`expr`，则会和上边的修饰符导致「本地歧义」
+    $(
+        $(#[$attr:meta])*
+        $name:ident => $config_path:expr $(;)?
+    )*
+) => {
+    /// 主Shell
+    /// * 🎯正常BabelNAR CLI shell启动
+    /// * 🎯正常用户命令行交互体验
+    $(#[$attr_root])*
+    #[test]
+    #[ignore = "仅作试运行用，不用于自动化测试"]
+    pub fn main_shell() -> Result<()> {
+        main($cin_path, &[])
+    }
+
+
+    /// Matriangle服务器
+    /// * 🎯复现先前基于Matriangle环境的NARS实验
+    $(#[$attr_root])*
+    #[test]
+    #[ignore = "仅作试运行用，不用于自动化测试"]
+    pub fn main_matriangle_server() -> Result<()> {
+        // 以默认参数启动
+        main_configs($cin_path, &[MATRIANGLE_SERVER])
+    }
+
+    $(
+        $(#[$attr])*
         #[test]
-        #[ignore = "仅作试运行用，不用于自动化测试"]
-        pub fn main_shell() -> Result<()> {
-            main($cin_path, &[])
+        #[ignore = "【2024-06-12 23:52:35】不用于自动化测试：会自动清屏影响测试结果呈现"]
+        pub fn $name() -> Result<()> {
+            main_configs($cin_path, &[PRELUDE_TEST, $config_path])
         }
-
-
-        /// Matriangle服务器
-        /// * 🎯复现先前基于Matriangle环境的NARS实验
-        $(#[$attr_root])*
-        #[test]
-        #[ignore = "仅作试运行用，不用于自动化测试"]
-        pub fn main_matriangle_server() -> Result<()> {
-            // 以默认参数启动
-            main_configs($cin_path, &[MATRIANGLE_SERVER])
-        }
-
-        $(
-            $(#[$attr])*
-            #[test]
-            #[ignore = "【2024-06-12 23:52:35】不用于自动化测试：会自动清屏影响测试结果呈现"]
-            pub fn $name() -> Result<()> {
-                main_configs($cin_path, &[PRELUDE_TEST, $config_path])
-            }
-        )*
-    };
+    )*
+};
 }
 
 /// 测试/ONA

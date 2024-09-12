@@ -61,8 +61,8 @@
 //! }
 //! ```
 
+use crate::println_cli;
 use anyhow::{anyhow, Result};
-use babel_nar::println_cli;
 use nar_dev_utils::{if_return, pipe, OptionBoost, ResultBoost};
 use serde::{Deserialize, Serialize};
 use std::{
@@ -742,8 +742,8 @@ pub fn try_complete_path(path: &Path) -> PathBuf {
 #[cfg(test)]
 pub mod tests {
     use super::*;
+    use crate::tests::*;
     use anyhow::Result;
-    use babel_nar::tests::*;
     use nar_dev_utils::{asserts, macro_once};
 
     /// 测试/解析

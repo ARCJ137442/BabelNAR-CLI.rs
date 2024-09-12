@@ -2,16 +2,14 @@
 //! * ✨终端美化相关
 //!
 
-nar_dev_utils::mods! {
-    // 输出打印
-    pub output_print;
+// 输出打印
+pub mod output_print;
 
-    // 读取行迭代器
-    pub readline_iter;
+// 读取行迭代器
+pub mod readline_iter;
 
-    // NAVM输出缓存
-    pub navm_output_cache;
+// NAVM输出缓存
+pub mod navm_output_cache;
 
-    // Websocket支持
-    pub websocket;
-}
+// Websocket支持
+pub mod websocket;

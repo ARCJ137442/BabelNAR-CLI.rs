@@ -7,3 +7,7 @@ pub mod support;
 
 // CLI主程序功能
 pub mod cli;
+
+// 单元测试
+#[cfg(test)]
+mod tests;

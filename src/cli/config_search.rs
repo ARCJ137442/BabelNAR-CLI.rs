@@ -1,11 +1,9 @@
 //! CIN自动搜索
 
 use crate::cli::{read_config_extern, LaunchConfig};
+use crate::println_cli;
+use crate::support::cin_search::{name_match::is_name_match, path_walker::PathWalkerV1};
 use anyhow::Result;
-use babel_nar::{
-    cli_support::cin_search::{name_match::is_name_match, path_walker::PathWalkerV1},
-    println_cli,
-};
 use nar_dev_utils::ToDebug;
 use std::path::{Path, PathBuf};
 
@@ -81,7 +79,7 @@ pub fn search_configs<S: AsRef<str>>(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use babel_nar::tests::config_paths::ARG_PARSE_TEST;
+    use crate::tests::config_paths::ARG_PARSE_TEST;
     // use std::env::current_dir;
 
     #[test]

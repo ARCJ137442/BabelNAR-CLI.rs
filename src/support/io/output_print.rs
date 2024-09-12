@@ -242,17 +242,17 @@ macro_rules! println_cli {
     // 消息 | ✨可格式化
     ([$enum_type_name:ident] $($tail:tt)*) => {
         // 调用内部函数
-        $crate::cli_support::io::output_print::OutputType::$enum_type_name.print_line(&format!($($tail)*));
+        $crate::support::io::output_print::OutputType::$enum_type_name.print_line(&format!($($tail)*))
     };
     // NAVM输出 表达式
     ($navm_output:expr) => {
         // 调用内部函数
-        $crate::cli_support::io::output_print::OutputType::print_navm_output($navm_output);
+        $crate::support::io::output_print::OutputType::print_navm_output($navm_output)
     };
     // NAVM输出 表达式 | 🪄详细
     (% $navm_output:expr) => {
         // 调用内部函数
-        $crate::cli_support::io::output_print::OutputType::print_navm_output_verbose($navm_output);
+        $crate::support::io::output_print::OutputType::print_navm_output_verbose($navm_output)
     };
 }
 
@@ -262,17 +262,17 @@ macro_rules! eprintln_cli {
     // 消息 | ✨可格式化
     ([$enum_type_name:ident] $($tail:tt)*) => {
         // 调用内部函数
-        $crate::cli_support::io::output_print::OutputType::$enum_type_name.eprint_line(&format!($($tail)*));
+        $crate::support::io::output_print::OutputType::$enum_type_name.eprint_line(&format!($($tail)*))
     };
     // NAVM输出 表达式
     ($navm_output:expr) => {
         // 调用内部函数
-        $crate::cli_support::io::output_print::OutputType::eprint_navm_output($navm_output);
+        $crate::support::io::output_print::OutputType::eprint_navm_output($navm_output)
     };
     // NAVM输出 表达式 | 🪄详细
     (% $navm_output:expr) => {
         // 调用内部函数
-        $crate::cli_support::io::output_print::OutputType::eprint_navm_output_verbose($navm_output);
+        $crate::support::io::output_print::OutputType::eprint_navm_output_verbose($navm_output)
     };
 }
 
