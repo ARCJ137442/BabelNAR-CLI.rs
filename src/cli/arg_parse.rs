@@ -38,9 +38,18 @@ pub struct CliArgs {
     // * 📌行为
     //   * 没有 ⇒ `false`
     //   * 有　 ⇒ `true`
+    // * 📄参考[`DEFAULT_CONFIG_KEYWORD`]
     /// Disable the default configuration file in the same directory as exe
     #[arg(short, long)]
     pub disable_default: bool,
+
+    // 快速启动
+    // * 消除在「成功加载配置」之后的延迟时间，并快速启动CIN
+    // * 🎯在明确「所加载的配置」时，快速启动虚拟机并进入终端
+    // * 📄直接跳过「配置加载完毕！程序将在1s后启动。。。」
+    /// Launch the virtual machine immediately without delay after loading the configuration
+    #[arg(long)]
+    pub quick_start: bool,
     // ! 🚩【2024-04-02 11:36:18】目前除了「配置加载」外，莫将任何「NAVM实现特定，可以内置到『虚拟机配置』的字段放这儿」
 }
 

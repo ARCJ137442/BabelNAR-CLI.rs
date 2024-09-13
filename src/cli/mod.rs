@@ -56,7 +56,7 @@ pub fn main_args(cwd: IoResult<PathBuf>, args: impl Iterator<Item = String>) -> 
     polyfill_config_from_user(&mut config, cwd);
 
     // 清屏，预备启动
-    if user_verbose {
+    if !args.quick_start && user_verbose {
         println_cli!([Info] "配置加载完毕！程序将在1s后启动。。。");
         sleep(Duration::from_secs(1));
     }
