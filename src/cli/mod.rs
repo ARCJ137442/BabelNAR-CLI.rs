@@ -40,8 +40,10 @@ pub fn main_args(cwd: IoResult<PathBuf>, args: impl Iterator<Item = String>) -> 
         .ok();
 
     // （Windows下）启用终端颜色
-    let _ = colored::control::set_virtual_terminal(true)
-        .inspect_err(|_| eprintln_cli!([Error] "无法启动终端彩色显示。。"));
+    if cfg!(windows) {
+        let _ = colored::control::set_virtual_terminal(true)
+            .inspect_err(|_| eprintln_cli!([Error] "无法启动终端彩色显示。。"));
+    }
 
     // 解析命令行参数
     let args = CliArgs::parse_from(args);
