@@ -39,11 +39,8 @@ pub fn main_args(cwd: IoResult<PathBuf>, args: impl Iterator<Item = String>) -> 
         .inspect_err(|e| println_cli!([Warn] "无法获取当前工作目录：{e}"))
         .ok();
 
-    // （Windows下）启用终端颜色
-    if cfg!(windows) {
-        let _ = colored::control::set_virtual_terminal(true)
-            .inspect_err(|_| eprintln_cli!([Error] "无法启动终端彩色显示。。"));
-    }
+    // 启用终端颜色（若可）
+    set_virtual_terminal();
 
     // 解析命令行参数
     let args = CliArgs::parse_from(args);
@@ -92,4 +89,17 @@ pub fn main_args(cwd: IoResult<PathBuf>, args: impl Iterator<Item = String>) -> 
 
     // 返回结果
     result
+}
+
+/// 启动终端颜色（Windows下）
+#[cfg(windows)]
+fn set_virtual_terminal() {
+    let _ = colored::control::set_virtual_terminal(true)
+        .inspect_err(|_| eprintln_cli!([Error] "无法启动终端彩色显示。。"));
+}
+
+/// 启动终端颜色（非Windows）
+#[cfg(not(windows))]
+fn set_virtual_terminal() {
+    // * 🚩【2024-09-14 16:09:42】目前代码为空
 }

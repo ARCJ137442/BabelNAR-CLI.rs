@@ -1,6 +1,7 @@
 # BabelNAR-CLI.rs
 
-简体中文 | [English](./README.en-us.md)
+|**简体中文** | [English](README.en.md)|
+|:-:|:-:|
 
     🏗️项目的**英文文档**尚在筹建，有意者欢迎提交PR
 
@@ -8,7 +9,9 @@
 
 该项目使用[语义化版本 2.0.0](https://semver.org/)进行版本号管理。
 
-[**BabelNAR.rs**](https://github.com/ARCJ137442/NAVM.rs)的命令行接口(CLI)
+## 简介
+
+[**BabelNAR.rs**](https://github.com/ARCJ137442/BabelNAR.rs)的命令行接口(CLI)
 
 - ✨从配置中快速启动、测试各类NARS实现
   - 🎯一站式NARS**启动器**
